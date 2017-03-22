@@ -15,8 +15,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:text="FORTUNE TELLER"
+            android:id="@+id/button5"
+            android:background="@drawable/button"
+            android:textSize="20sp"
+            android:textColor="@color/button_text"
+            android:onClick="onClickFortune"
+            android:fontFamily="\@"
+            android:layout_marginEnd="@dimen/splash_horizontal_margin"
+            android:paddingLeft="@dimen/button_padding"
+            android:paddingRight="@dimen/button_padding"/>
+
+        <!--Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:text="HACK"
             android:id="@+id/button2"
+            android:layout_below="@+id/button5"
+            android:layout_alignEnd="@+id/button5"
             android:background="@drawable/button"
             android:textSize="20sp"
             android:textColor="@color/button_text"
@@ -40,7 +57,7 @@
             android:layout_marginTop="20sp"
             android:background="@drawable/button"
             android:textColor="@color/button_text"
-            android:onClick="onClickWeakness"/>
+            android:onClick="onClickWeakness"/-->
     </RelativeLayout>
 
     <Button
@@ -48,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:text="OPT"
+        android:text="OPTIONS"
         android:id="@+id/button1"
         android:background="@drawable/button"
         android:textSize="20sp"
@@ -76,5 +93,6 @@
         android:background="@drawable/button"
         android:textColor="@color/button_text"
         android:onClick="onClickDictionary"/>
+
 
 </RelativeLayout>

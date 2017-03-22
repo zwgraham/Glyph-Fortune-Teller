@@ -39,14 +39,14 @@ class SplashActivity : Activity() {
         actionBar?.hide()
 
         val button1 = findViewById(R.id.button1) as Button
-        val button2 = findViewById(R.id.button2) as Button
+        //val button2 = findViewById(R.id.button2) as Button
         val button3 = findViewById(R.id.button3) as Button
-        val button4 = findViewById(R.id.button4) as Button
+        //val button4 = findViewById(R.id.button4) as Button
         val typeface = Typeface.createFromAsset(assets, "Coda-Regular.ttf")
         button1.typeface = typeface
-        button2.typeface = typeface
+        //button2.typeface = typeface
         button3.typeface = typeface
-        button4.typeface = typeface
+        //button4.typeface = typeface
     }
 
     override fun onResume() {
@@ -64,6 +64,10 @@ class SplashActivity : Activity() {
 
     fun onClickDictionary(v: View) {
         startActivity(Intent(this@SplashActivity, DictActivity::class.java))
+    }
+
+    fun onClickFortune(v: View) {
+        startActivity(Intent(this@SplashActivity, FortuneActivity::class.java))
     }
 
     fun onClickWeakness(v: View) {
