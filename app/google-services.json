@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "558471180193",
+    "project_id": "glyph-fortune-teller"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558471180193:android:e87332cdffb34c9c",
+        "android_client_info": {
+          "package_name": "jp.org.example.geckour.glyph"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCOu4VnxTWBs0nxKLwLoqv9bF8tU_CGRw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-96033964-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

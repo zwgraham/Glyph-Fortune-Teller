@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.IBinder
 import android.preference.*
 import android.util.Log
-import com.android.vending.billing.IInAppBillingService
 
 import com.google.android.gms.analytics.HitBuilders
 import com.google.android.gms.analytics.Tracker
@@ -31,22 +30,12 @@ class Pref : android.preference.PreferenceActivity() {
 
         fragmentManager.beginTransaction().replace(android.R.id.content, prefFragment()).commit()
 
-        val serviceIntent = Intent("com.android.vending.billing.InAppBillingService.BIND");
-        serviceIntent.setPackage("com.android.vending");
-        bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
-
         val t: Tracker? = (application as Analytics).getTracker(Analytics.TrackerName.APP_TRACKER)
         t?.setScreenName("PreferenceActivity")
         t?.send(HitBuilders.ScreenViewBuilder().build())
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if (mService != null) {
-            unbindService(mServiceConn)
-        }
-    }
 
     class prefFragment : PreferenceFragment() {
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,40 +59,7 @@ class Pref : android.preference.PreferenceActivity() {
                 }
             }
             maxLevelPref?.summary = maxLevelPref?.text
-            //preferences.xml内のdonateがクリックされたかをListen
-            donatePref = findPreference("donate") as PreferenceScreen
-            donatePref?.onPreferenceClickListener = object : Preference.OnPreferenceClickListener {
-                override fun onPreferenceClick(preference: Preference): Boolean {
-                    val sku = "donate"
 
-                    skuList.add(sku)
-                    val querySkus = Bundle()
-                    querySkus.putStringArrayList("ITEM_ID_LIST", skuList)
-                    val skuDetails: Bundle? = mService?.getSkuDetails(3, pref!!.packageName, "inapp", querySkus);
-                    val response = skuDetails?.getInt("RESPONSE_CODE")
-
-                    if (response == 0) {
-                        val responseList = skuDetails?.getStringArrayList("DETAILS_LIST")
-                        var isMatchSku = false
-                        responseList?.forEach {
-                            val obj = JSONObject(it);
-                            val productName = obj.getString("productId");
-                            if (productName.equals(sku)) isMatchSku = true
-                        }
-                        if (isMatchSku) {
-                            val buyIntentBundle: Bundle? = mService?.getBuyIntent(3, pref!!.packageName, sku, "inapp", "")
-                            val pendingIntent = buyIntentBundle?.getParcelable<PendingIntent>("BUY_INTENT")
-                            pref!!.startIntentSenderForResult(pendingIntent?.intentSender, 1001, Intent(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0))
-                        }
-                    }
-                    /*
-                    val buyIntentBundle: Bundle? = mService?.getBuyIntent(3, pref!!.packageName, "android.test.purchased", "inapp", "")
-                    val pendingIntent = buyIntentBundle?.getParcelable<PendingIntent>("BUY_INTENT")
-                    pref!!.startIntentSenderForResult(pendingIntent?.intentSender, 1001, Intent(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0))
-                    */
-                    return true
-                }
-            }
         }
     }
 
@@ -114,18 +70,6 @@ class Pref : android.preference.PreferenceActivity() {
         internal var max: Int = 0
         internal var minLevelPref: EditTextPreference? = null
         internal var maxLevelPref: EditTextPreference? = null
-        internal var donatePref: PreferenceScreen? = null
-        internal val skuList = ArrayList<String>()
-        internal var mService: IInAppBillingService? = null
-        internal val mServiceConn = object : ServiceConnection {
-            override public fun onServiceDisconnected(name: ComponentName) {
-                mService = null
-            }
-
-            override public fun onServiceConnected(name: ComponentName, service: IBinder) {
-                mService = IInAppBillingService.Stub.asInterface(service)
-            }
-        }
 
         fun isMinLevelChanged(preference: Preference, newValue: Any): Boolean {
             val editTextPreference = preference as EditTextPreference

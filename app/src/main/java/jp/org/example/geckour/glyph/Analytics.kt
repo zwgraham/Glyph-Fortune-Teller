@@ -21,9 +21,9 @@ class Analytics : Application() {
         if (!mTrackers.containsKey(trackerId)) {
             val analytics = GoogleAnalytics.getInstance(this)
             val t = when(trackerId) {
-                TrackerName.APP_TRACKER -> analytics.newTracker(R.xml.app_tracker)
+                TrackerName.APP_TRACKER -> analytics.newTracker("NOPE")
                 TrackerName.GLOBAL_TRACKER -> analytics.newTracker(R.xml.global_tracker)
-                else -> analytics.newTracker(R.xml.ecommerce_tracker)
+                else -> analytics.newTracker("nope")
             }
             t.enableAdvertisingIdCollection(true)
             mTrackers.put(trackerId, t)

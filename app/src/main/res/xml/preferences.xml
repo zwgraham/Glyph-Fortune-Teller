@@ -36,9 +36,4 @@
         android:inputType="number"
         android:digits="012345678"
         android:order="4" />
-    <PreferenceScreen
-        android:key="donate"
-        android:title="Donate"
-        android:summary="Donate to author for his better Ingress life"
-        android:order="5" />
 </PreferenceScreen>
