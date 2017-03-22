@@ -1,11 +1,11 @@
-Glyph
+Glyph Fortune Teller
 =====
-note: Ingress is copylight 2015 Niantic Labs. This App is not affiliated with Niantic Labs nor Google.  
+note: Ingress is copyright 2015 Niantic Labs. This App is not affiliated with Niantic Labs
   
-  
-This is the Android app to practice Glyph Hack, which is mini game from Ingress.  
-This app is incomplete, so please install at your own risk.  
-  
-If you notice bugs, I'm grad and willing to report on [Issues](https://github.com/geckour/Glyph/issues).  
+Consult the Shapers on your future.
+
+This Fortune Telling App is made for the Magnus Reawakens art project submission by the San Francisco Enlightened.
+
+It is based on the Glyph practice app by geckour https://github.com/geckour/Glyph/issues).
   
 Thanks to [Glyphtionary](http://glyphtionary.com/), many of sites provide patterns of Glyph sequence, and all of supporters.
