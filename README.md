@@ -1,4 +1,4 @@
-Glyph Fortune Teller
+The Transvisionary Oracle
 =====
 note: Ingress is copyright 2015 Niantic Labs. This App is not affiliated with Niantic Labs
   
